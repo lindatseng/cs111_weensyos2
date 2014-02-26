@@ -190,7 +190,7 @@ schedule(void)
 {
 	pid_t pid = current->p_pid;
 
-	if (scheduling_algorithm == 0)
+	if (scheduling_algorithm == 0) {
 		while (1) {
 			pid = (pid + 1) % NPROCS;
 
@@ -200,6 +200,25 @@ schedule(void)
 			if (proc_array[pid].p_state == P_RUNNABLE)
 				run(&proc_array[pid]);
 		}
+	} else if (scheduling_algorithm == 1) {
+		// strict priority scheduling
+		// schedos-1 higher priority than schedos-2, 
+		// which has higher priority than schedos-3, 
+		// which has higher priority than schedos-4
+		// i.e. Process IDs correspond to priority levels (smaller priority levels indicate higher priority)
+		while (1) {
+			pid = 1;
+			while (pid <= NPROCS) {
+				if (proc_array[pid].p_state == P_RUNNABLE)
+					run(&proc_array[pid]);
+				else
+					pid++;
+			}
+		}
+	} else if (scheduling_algorithm == 2) {
+		// priority levels are defined by a separate p_priority field of the process descriptor
+	}
+
 
 	// If we get here, we are running an unknown scheduling algorithm.
 	cursorpos = console_printf(cursorpos, 0x100, "\nUnknown scheduling algorithm %d\n", scheduling_algorithm);
