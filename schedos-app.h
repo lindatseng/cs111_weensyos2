@@ -74,7 +74,7 @@ sys_share(int share)
  *****************************************************************************/
 
 static inline void
-sys_print(int printChar)
+sys_print(uint16_t printChar)
 {
 	asm volatile("int %0\n"
 		     : : "i" (INT_SYS_PRINT),
