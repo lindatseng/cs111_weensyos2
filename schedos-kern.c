@@ -178,7 +178,7 @@ interrupt(registers_t *reg)
 		run(current);
 
 	case INT_SYS_PRINT:
-		*cursorpos++ = PRINTCHAR;
+		*cursorpos++ = reg->reg_eax;
 		run(current);
 
 	default:
