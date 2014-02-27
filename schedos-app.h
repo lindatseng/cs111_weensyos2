@@ -45,7 +45,7 @@ static inline void
 sys_priority(int priority)
 {
 	asm volatile("int %0\n"
-		     : : "i" (INT_SYS_PRI)
+		     : : "i" (INT_SYS_PRI),
 		     	 "a" (priority)
 		     : "cc", "memory");
 }
