@@ -7,4 +7,7 @@
 
 #define PRINTCHAR	('4' | 0x0E00)
 
+#define PRIORITY	1
+#define SHARE	4
+
 #include "schedos-1.c"

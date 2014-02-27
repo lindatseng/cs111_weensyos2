@@ -19,11 +19,20 @@
 #define PRINTCHAR	('1' | 0x0C00)
 #endif
 
+#ifndef PRIORITY
+#define PRIORITY	1
+#endif
+
+#ifndef SHARE
+#define SHARE	1
+#endif
+
 void
 start(void)
 {
 	int i;
-
+	sys_priority(PRIORITY);
+	sys_share(SHARE);
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
