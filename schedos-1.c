@@ -20,11 +20,11 @@
 #endif
 
 #ifndef PRIORITY
-#define PRIORITY	1
+#define PRIORITY	2
 #endif
 
 #ifndef SHARE
-#define SHARE	1
+#define SHARE	2
 #endif
 
 void

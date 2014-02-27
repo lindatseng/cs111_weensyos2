@@ -93,10 +93,10 @@ start(void)
 		proc->p_state = P_RUNNABLE;
 
 		// Set p_priority
-		proc->p_priority = 0;
+		proc->p_priority = (i - 1) % 3;
 
 		proc->p_run_time = 0;
-		proc->p_share = 0;
+		proc->p_share = i;
 	}
 
 	// Initialize the cursor-position shared variable to point to the
