@@ -70,4 +70,8 @@ I implement a new system call sys_print that atomically prints a character to th
 
 Anything else you'd like us to know:
 
+Extra-Credit Exercise 8:
+I implemented one more synchronization mechanism by using the atomica operations in x86sync.h
+The code is in schedos-1.c #define EX8 will activate the part of EX8.
+
 
