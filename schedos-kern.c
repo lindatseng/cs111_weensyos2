@@ -169,6 +169,15 @@ interrupt(registers_t *reg)
 		// Switch to the next runnable process.
 		schedule();
 
+	case INT_SYS_PRI:
+		current->p_priority = reg->reg_eax;
+		run(current);
+
+	case INT_SYS_SHARE:
+		current->p_share = reg->reg_eax;
+		run(current);
+
+
 	default:
 		while (1)
 			/* do nothing */;

@@ -50,6 +50,22 @@ sys_priority(int priority)
 		     : "cc", "memory");
 }
 
+/*****************************************************************************
+ * sys_share
+ *
+ *   Set share factor of current process
+ *
+ *****************************************************************************/
+
+static inline void
+sys_share(int share)
+{
+	asm volatile("int %0\n"
+		     : : "i" (INT_SYS_SHARE),
+		     	 "a" (share)
+		     : "cc", "memory");
+}
+
 
 /*****************************************************************************
  * sys_exit(status)
