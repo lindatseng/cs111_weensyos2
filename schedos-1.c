@@ -13,6 +13,7 @@
  *   PRINTCHAR appropriately.
  *
  *****************************************************************************/
+#define EX8
 
 #ifndef PRINTCHAR
 #define PRINTCHAR	('1' | 0x0C00)
@@ -23,10 +24,22 @@ start(void)
 {
 	int i;
 
+
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
-		//*cursorpos++ = PRINTCHAR;
-		sys_print((uint16_t)PRINTCHAR);
+
+		#ifndef EX8
+			sys_print((uint16_t)PRINTCHAR);
+		#endif
+
+		#ifdef EX8
+			while (atomic_swap(&lock, 1) != 0) {
+				continue;
+			}
+			*cursorpos++ = PRINTCHAR;
+			atomic_swap(&lock, 0);
+		#endif
+		
 		sys_yield();
 	}
 
