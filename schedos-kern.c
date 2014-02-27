@@ -93,7 +93,7 @@ start(void)
 		proc->p_state = P_RUNNABLE;
 
 		// Set p_priority
-		proc->p_priority = i%3;
+		proc->p_priority = i%3 + 1;
 	}
 
 	// Initialize the cursor-position shared variable to point to the
@@ -101,7 +101,7 @@ start(void)
 	cursorpos = (uint16_t *) 0xB8000;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 1;
+	scheduling_algorithm = 2;
 
 	// Switch to the first process.
 	run(&proc_array[1]);
@@ -226,7 +226,7 @@ schedule(void)
 
 			// find the numerical priority level with the highest priority
 			int i;
-			for (i = 0; i < NPROCS; i++)
+			for (i = 1; i < NPROCS; i++)
 				if(proc_array[i].p_state == P_RUNNABLE)
 					if(proc_array[i].p_priority <= priority)
 						priority = proc_array[i].p_priority;

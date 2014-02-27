@@ -32,7 +32,7 @@ typedef struct process {
 	int p_exit_status;		// Process's exit status
 
 	// For exercise
-	int p_priority // Process's priority
+	int p_priority; // Process's priority
 } process_t;
 
 
