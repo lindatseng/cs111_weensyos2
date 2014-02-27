@@ -94,6 +94,9 @@ start(void)
 
 		// Set p_priority
 		proc->p_priority = (i - 1) % 3;
+
+		proc->p_run_time = 0;
+		proc->p_share = i;
 	}
 
 	// Initialize the cursor-position shared variable to point to the
@@ -101,7 +104,7 @@ start(void)
 	cursorpos = (uint16_t *) 0xB8000;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 2;
+	scheduling_algorithm = 3;
 
 	// Switch to the first process.
 	run(&proc_array[1]);
@@ -236,6 +239,16 @@ schedule(void)
 			if (proc_array[pid].p_priority == priority
 				&& proc_array[pid].p_state == P_RUNNABLE)
 				run(&proc_array[pid]);
+		}
+	} else if (scheduling_algorithm == 3) {
+		// for exercise 4B
+		while(1) {
+			proc_array[pid].p_run_time++;
+			if (proc_array[pid].p_run_time < proc_array.p_share
+				&& proc_array[pid].p_state == P_RUNNABLE)
+				run(&proc_array[pid]);
+			else
+				pid = (pid + 1) % NPROCS;
 		}
 	}
 

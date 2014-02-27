@@ -33,6 +33,8 @@ typedef struct process {
 
 	// For exercise
 	int p_priority; // Process's priority
+	int p_share; 
+	int p_run_time;
 } process_t;
 
 
