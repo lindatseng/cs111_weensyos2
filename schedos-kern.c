@@ -207,7 +207,7 @@ schedule(void)
 		// which has higher priority than schedos-4
 		// i.e. Process IDs correspond to priority levels (smaller priority levels indicate higher priority)
 		while (1) {
-			pid = 1
+			pid = 1;
 			while (pid < NPROCS) {
 				if (proc_array[pid].p_state == P_RUNNABLE)
 					run(&proc_array[pid]);
