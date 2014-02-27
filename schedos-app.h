@@ -34,6 +34,22 @@ sys_yield(void)
 		     : "cc", "memory");
 }
 
+/*****************************************************************************
+ * sys_priority
+ *
+ *   Set priority of current process
+ *
+ *****************************************************************************/
+
+static inline void
+sys_priority(int priority)
+{
+	asm volatile("int %0\n"
+		     : : "i" (INT_SYS_PRI)
+		     	 "a" (priority)
+		     : "cc", "memory");
+}
+
 
 /*****************************************************************************
  * sys_exit(status)
