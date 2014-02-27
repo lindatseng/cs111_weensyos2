@@ -26,4 +26,7 @@
 
 extern uint16_t * volatile cursorpos;
 
+// EX8
+extern uint32_t lock;
+
 #endif

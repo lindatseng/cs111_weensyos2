@@ -103,6 +103,8 @@ start(void)
 	// console's first character (the upper left).
 	cursorpos = (uint16_t *) 0xB8000;
 
+	lock = (uint32_t) 0;
+
 	// Initialize the scheduling algorithm.
 	scheduling_algorithm = 0;
 
