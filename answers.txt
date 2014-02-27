@@ -1,5 +1,5 @@
-Name:
-UCLA ID:
+Name: Li Tseng
+UCLA ID: 304272081
 
 
 -------------------------------------------------------------------------------
@@ -7,23 +7,52 @@ UCLA ID:
 Response to Exercise 1:
 
 The name of the scheduling algorithm is:
-
+Round-Robin Scheduling Algorithm
 
 (Exercise 2 is a coding exercise)
-
+The "scheduling_algorithm == 1" part in schedule()
 
 Response to Exercise 3:
 
 Average turnaround time for scheduling_algorithm 0:
+Process 1: 319 * 4 + 1 = 1277
+Process 2: 319 * 4 + 2 = 1278
+Process 3: 319 * 4 + 3 = 1279
+Process 4: 319 * 4 + 4 = 1280
+
+Average = (1277 + 1278 + 1279 + 1280) / 4 = 5114 / 4 = 1278.5 ms
+
 Average turnaround time for scheduling_algorithm 1:
+Process 1: 320 * 1 = 320
+Process 2: 320 * 2 = 640
+Process 3: 320 * 3 = 960
+Process 4: 320 * 4 = 1280
+
+Average = (320 + 640 + 960 + 1280) / 4 = 3200 / 4 = 800 ms
+
 
 Average wait time for scheduling_algorithm 0:
+Process 1: 0
+Process 2: 1
+Process 3: 2
+Process 4: 3
+
+Average = (0 + 1 + 2 + 3) / 4 = 6 / 4 = 1.5 ms
+
 Average wait time for scheduling_algorithm 1:
+Process 1: 0
+Process 2: 320
+Process 3: 640
+Process 4: 960
+
+Average = (0 + 320 + 640 + 960) / 4 = 1920 / 4 = 480 ms
 
 
 Exercise 4:
 
 Did you complete Exercise 4A or Exercise 4B?
+For exercise 4A:
+I assigned the priority of processes when setting up process descriptor and make schedos-1 and schedos-4 has the same priority, which is higher than schedos-2, which is higher than schedos-3.
 
 
 Exercise 5:
