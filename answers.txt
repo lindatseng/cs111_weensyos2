@@ -65,6 +65,7 @@ The first known timer interrupt occured during the execution of process 4.
 When an interrupt occured, it will call schedule() and switch to the next scheduling processes. Process 4 is interrupted here and has not finished execution, so that '4' is not printed on screen.  Then, clock interrupt occured and it went to the next scheduling process, which is process 1 in this case.
 
 (Exercise 6 is a coding exercise)
+I implement a new system call sys_print that atomically prints a character to the console, which can fix the race condition.
 
 
 Anything else you'd like us to know:
