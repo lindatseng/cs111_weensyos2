@@ -243,17 +243,14 @@ schedule(void)
 	} else if (scheduling_algorithm == 3) {
 		// for exercise 4B
 		while(1) {
-			proc_array[pid].p_run_time++;
-
-			if (proc_array[pid].p_run_time == proc_array[pid].p_share) {
-				proc_array[pid].p_run_time = 0;
-				pid = (pid + 1) % NPROCS;
-			}
-
 			if (proc_array[pid].p_run_time < proc_array[pid].p_share
 				&& proc_array[pid].p_state == P_RUNNABLE) {
+				proc_array[pid].p_run_time++;
 				run(&proc_array[pid]);
-			}
+			} else {
+				proc_array[pid].p_run_time = 0;
+				pid = (pid + 1) % NPROCS;
+			}				
 		}
 	}
 
