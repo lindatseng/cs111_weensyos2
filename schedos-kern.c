@@ -91,6 +91,9 @@ start(void)
 
 		// Mark the process as runnable!
 		proc->p_state = P_RUNNABLE;
+
+		// Set p_priority
+		proc->p_priority = i%3;
 	}
 
 	// Initialize the cursor-position shared variable to point to the
@@ -217,6 +220,23 @@ schedule(void)
 		}
 	} else if (scheduling_algorithm == 2) {
 		// priority levels are defined by a separate p_priority field of the process descriptor
+		while(1) {
+			pid = (pid + 1) % NPROCS;
+			int priority = NPROCS;
+
+			// find the numerical priority level with the highest priority
+			int i;
+			for (i = 0; i < NPROCS; i++)
+				if(proc_array[i].p_state == P_RUNNABLE)
+					if(proc_array[i].p_priority <= priority)
+						priority = proc_array[i].p_priority;
+
+			// If the current process has the same priority level with the highest priority
+			// Run the process if it is runnable
+			if (proc_array[pid].p_priority == priority
+				&& proc_array[pid].p_state == P_RUNNABLE)
+				run(&proc_array[pid]);
+		}
 	}
 
 
