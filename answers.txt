@@ -51,8 +51,13 @@ Average = (0 + 320 + 640 + 960) / 4 = 1920 / 4 = 480 ms
 Exercise 4:
 
 Did you complete Exercise 4A or Exercise 4B?
+Both 4A and 4B
+
 For exercise 4A:
-I assigned the priority of processes when setting up process descriptor and make schedos-1 and schedos-4 has the same priority, which is higher than schedos-2, which is higher than schedos-3.
+I assigned the priority of processes when setting up process descriptor and make schedos-1 and schedos-4 has the same priority, which is higher than schedos-2, which is higher than schedos-3 when initialization.
+
+For exercise 4B:
+I assigned the share factor p_share of processes when setting up process descriptor and make schedos-1 has share 1, schedos-2 has share 2, schedos-3 has share 3, schedos-4 has share 4 when initialization.
 
 
 Exercise 5:
