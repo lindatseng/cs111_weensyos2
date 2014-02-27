@@ -247,8 +247,10 @@ schedule(void)
 				&& proc_array[pid].p_state == P_RUNNABLE) {
 				proc_array[pid].p_run_time++;
 				run(&proc_array[pid]);
-			} else
+			} else {
+				proc_array[pid].p_run_time = 0;
 				pid = (pid + 1) % NPROCS;
+			}				
 		}
 	}
 
