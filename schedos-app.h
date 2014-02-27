@@ -45,7 +45,7 @@ static inline void
 sys_priority(int priority)
 {
 	asm volatile("int %0\n"
-		     : : "i" (INT_SYS_PRI),
+		     : : "i" (INT_SYS_PRIOR),
 		     	 "a" (priority)
 		     : "cc", "memory");
 }
@@ -66,6 +66,21 @@ sys_share(int share)
 		     : "cc", "memory");
 }
 
+/*****************************************************************************
+ * sys_print
+ *
+ *   Print character
+ *
+ *****************************************************************************/
+
+static inline void
+sys_print(int printChar)
+{
+	asm volatile("int %0\n"
+		     : : "i" (INT_SYS_PRINT),
+		     	 "a" (printChar)
+		     : "cc", "memory");
+}
 
 /*****************************************************************************
  * sys_exit(status)

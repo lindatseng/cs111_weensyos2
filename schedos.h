@@ -16,8 +16,9 @@
 #define INT_SYS_EXIT		49
 #define INT_SYS_USER1		50
 #define INT_SYS_USER2		51
-#define INT_SYS_PRI 		52
+#define INT_SYS_PRIOR 		52
 #define INT_SYS_SHARE 		53
+#define INT_SYS_PRINT 		54 
 
 
 
