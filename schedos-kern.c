@@ -98,7 +98,7 @@ start(void)
 	cursorpos = (uint16_t *) 0xB8000;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 0;
+	scheduling_algorithm = 1;
 
 	// Switch to the first process.
 	run(&proc_array[1]);
@@ -207,9 +207,12 @@ schedule(void)
 		// which has higher priority than schedos-4
 		// i.e. Process IDs correspond to priority levels (smaller priority levels indicate higher priority)
 		while (1) {
-			for (pid = 1; pid < NPROCS; pid++) {
+			pid = 1
+			while (pid < NPROCS) {
 				if (proc_array[pid].p_state == P_RUNNABLE)
 					run(&proc_array[pid]);
+				else
+					pid++;
 			}
 		}
 	} else if (scheduling_algorithm == 2) {
